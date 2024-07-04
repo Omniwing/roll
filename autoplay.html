@@ -3,30 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autoplay YouTube</title>
-    <script>
-        function openYouTubeApp() {
-            var videoId = "dQw4w9WgXcQ"; // Replace with your actual YouTube video ID
-            var androidLink = "vnd.youtube://www.youtube.com/watch?v=" + videoId + "&autoplay=1";
-            var iosLink = "youtube://www.youtube.com/watch?v=" + videoId + "&autoplay=1";
-            var fallbackLink = "https://apnews.com";
-
-            // Try to open the app link first for Android or iOS
-            var appLink = /iPhone|iPad|iPod/i.test(navigator.userAgent) ? iosLink : androidLink;
-            window.location.href = appLink;
-
-            // Fallback to the web link if the app is not installed or if user chooses not to open in app
-            setTimeout(function() {
-                window.location.href = fallbackLink;
-            }, 2000);
+    <title>Autoplay Video</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
         }
-
-        window.onload = function() {
-            openYouTubeApp();
-        };
-    </script>
+        video {
+            width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
-    <h1>Redirecting to YouTube...</h1>
+    <video id="myVideo" controls autoplay>
+        <source src="https://github.com/Omniwing/roll/blob/main/never2.webm" type="video/webm">
+        Your browser does not support the video tag.
+    </video>
+    <script>
+        // Autoplay the video
+        document.getElementById('myVideo').play();
+    </script>
 </body>
 </html>

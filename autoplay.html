@@ -6,21 +6,27 @@
     <title>Autoplay YouTube</title>
     <script>
         function openYouTubeApp() {
+            console.log("openYouTubeApp called");
             var videoId = "dQw4w9WgXcQ"; // Replace with your actual YouTube video ID
             var androidLink = "vnd.youtube://www.youtube.com/watch?v=" + videoId + "&autoplay=1";
             var iosLink = "youtube://www.youtube.com/watch?v=" + videoId + "&autoplay=1";
             var webLink = "https://www.youtube.com/watch?v=" + videoId + "&autoplay=1";
+
+            console.log("User agent:", navigator.userAgent);
+            console.log("Trying to open app link");
 
             // Try to open the app link first
             window.location.href = /iPhone|iPad|iPod/i.test(navigator.userAgent) ? iosLink : androidLink;
 
             // Fallback to the web link if the app is not installed
             setTimeout(function() {
+                console.log("Fallback to web link");
                 window.location.href = webLink;
             }, 500);
         }
 
         window.onload = function() {
+            console.log("window.onload called");
             openYouTubeApp();
         };
     </script>

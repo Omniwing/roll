@@ -10,6 +10,7 @@
             var androidLink = "intent://www.youtube.com/watch?v=" + videoId + "#Intent;package=com.google.android.youtube;end";
             var iosLink = "youtube://www.youtube.com/watch?v=" + videoId + "&autoplay=1";
             var webLink = "https://www.youtube.com/watch?v=" + videoId + "&autoplay=1";
+            var fallbackLink = "https://apnews.com";
 
             // Try to open the app link first for Android
             if (/Android/i.test(navigator.userAgent)) {

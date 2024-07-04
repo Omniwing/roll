@@ -9,7 +9,6 @@
             var videoId = "dQw4w9WgXcQ"; // Replace with your actual YouTube video ID
             var androidLink = "intent://www.youtube.com/watch?v=" + videoId + "#Intent;package=com.google.android.youtube;end";
             var iosLink = "youtube://www.youtube.com/watch?v=" + videoId + "&autoplay=1";
-            var webLink = "https://www.youtube.com/watch?v=" + videoId + "&autoplay=1";
             var fallbackLink = "https://apnews.com";
 
             // Try to open the app link first for Android
@@ -18,13 +17,13 @@
             } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
                 window.location.href = iosLink;
             } else {
-                // Fallback to the web link if not Android or iOS
-                window.location.href = webLink;
+                // Fallback to the fallback link if not Android or iOS
+                window.location.href = fallbackLink;
             }
 
-            // Fallback to the web link if the app is not installed
+            // Fallback to the fallback link if the app is not installed
             setTimeout(function() {
-                window.location.href = webLink;
+                window.location.href = fallbackLink;
             }, 500);
         }
 

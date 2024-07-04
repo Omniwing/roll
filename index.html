@@ -23,11 +23,25 @@
 
   <!-- Redirect Script -->
   <script>
-    // Redirect to Rickroll
-    window.onload = function() {
-        window.location.href = 'autoplay.html';
-    };
-  </script>
+        function openYouTubeApp() {
+            var videoId = "dQw4w9WgXcQ"; // Replace with your actual YouTube video ID
+            var androidLink = "vnd.youtube://www.youtube.com/watch?v=" + videoId + "&autoplay=1";
+            var iosLink = "youtube://www.youtube.com/watch?v=" + videoId + "&autoplay=1";
+            var webLink = "https://www.youtube.com/watch?v=" + videoId + "&autoplay=1";
+
+            // Try to open the app link first
+            window.location.href = /iPhone|iPad|iPod/i.test(navigator.userAgent) ? iosLink : androidLink;
+
+            // Fallback to the web link if the app is not installed
+            setTimeout(function() {
+                window.location.href = webLink;
+            }, 500);
+        }
+
+        window.onload = function() {
+            openYouTubeApp();
+        };
+    </script>
 </head>
 <body>
   <h1>Breaking News: Major Update</h1>

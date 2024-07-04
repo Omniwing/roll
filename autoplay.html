@@ -1,11 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autoplay Video</title>
-</head>
-<body>
-    <iframe width="560" height="315" src="vnd.youtube://www.youtube.com/watch?v=dQw4w9WgXcQ&autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-</body>
-</html>
+function openYouTubeApp() {
+    var videoId = "dQw4w9WgXcQ"; // Replace with your actual YouTube video ID
+    var androidLink = "vnd.youtube://www.youtube.com/watch?v=" + videoId + "&autoplay=1";
+    var iosLink = "youtube://www.youtube.com/watch?v=" + videoId + "&autoplay=1";
+    var webLink = "https://www.youtube.com/watch?v=" + videoId + "&autoplay=1";
+
+    // Try to open the app link first
+    window.location.href = /iPhone|iPad|iPod/i.test(navigator.userAgent) ? iosLink : androidLink;
+
+    // Fallback to the web link if the app is not installed
+    setTimeout(function() {
+        window.location.href = webLink;
+    }, 500);
+}
+
+// Example usage
+openYouTubeApp();
